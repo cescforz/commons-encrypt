@@ -20,6 +20,7 @@
         <java.version>1.8</java.version>
         <springboot-version>2.1.6.RELEASE</springboot-version>
         <!--plugins-->
+        <maven-compiler-version>3.8.1</maven-compiler-version>
         <jacoco-maven-version>0.8.4</jacoco-maven-version>
         <maven-scm-version>1.11.2</maven-scm-version>
         <maven-source-version>3.1.0</maven-source-version>
@@ -27,7 +28,7 @@
         <maven-gpg-version>1.6</maven-gpg-version>
         <nexus-staging-maven-version>1.6.8</nexus-staging-maven-version>
         <maven-release-version>2.5.3</maven-release-version>
-        <maven-javadoc-version>3.0.1</maven-javadoc-version>
+        <maven-javadoc-version>3.1.1</maven-javadoc-version>
     </properties>
 
     <scm>
@@ -115,6 +116,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-version}</version>
                 <configuration>
                     <encoding>${project.build.sourceEncoding}</encoding>
                     <source>${java.version}</source>
@@ -234,7 +236,9 @@
                             <artifactId>maven-javadoc-plugin</artifactId>
                             <version>${maven-javadoc-version}</version>
                             <configuration>
-                                <additionalparam>-Xdoclint:none</additionalparam>
+                                <show>package</show>
+                                <!-- 禁用java 8 的DocLint新特性，以确保当javadoc有编译错误时，也能正常生成javadoc jar包-->
+                                <doclint>none</doclint>
                             </configuration>
                             <executions>
                                 <execution>
