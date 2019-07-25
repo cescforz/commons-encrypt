@@ -21,7 +21,7 @@
 <dependency>
     <groupId>cn.cescforz</groupId>
     <artifactId>commons-encrypt</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 - 在工程对应的`Application`类中增加@EnableEncryptBody注解，例如：
